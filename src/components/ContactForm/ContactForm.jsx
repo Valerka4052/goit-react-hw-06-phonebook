@@ -1,9 +1,12 @@
 import { nanoid } from "nanoid";
-import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage, Label, Button } from './ContactForm.styled';
- 
-export function ContactForm({ getStateValues, contacts }) {
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from '../../redux/Contacts/slice';
+
+export function ContactForm() {
+    const dispatch = useDispatch();
+    const contacts = useSelector(state=>state.contacts)
 
     const getValues = (inputValues) => {
         if (inputValues.name === '' || inputValues.number === '') {
@@ -18,7 +21,7 @@ export function ContactForm({ getStateValues, contacts }) {
                 number: inputValues.number,
                 id: nanoid(),
             };
-            getStateValues(contact);
+            dispatch(addContact(contact))
             inputValues.name = '';
             inputValues.number = '';
             };
@@ -59,15 +62,4 @@ export function ContactForm({ getStateValues, contacts }) {
                 </Form>
             </Formik>
         );
-    };
-
-    ContactForm.propTypes = {
-        getStateValues: PropTypes.func.isRequired,
-        contacts: PropTypes.arrayOf(
-            PropTypes.exact({
-                name: PropTypes.string.isRequired,
-                number: PropTypes.string.isRequired,
-                id: PropTypes.string.isRequired,
-            }).isRequired,
-        ).isRequired,
     };
