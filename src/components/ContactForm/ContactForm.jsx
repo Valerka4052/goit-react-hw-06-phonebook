@@ -6,7 +6,7 @@ import { addContact } from '../../redux/Contacts/slice';
 
 export function ContactForm() {
     const dispatch = useDispatch();
-    const contacts = useSelector(state=>state.contacts)
+    const contacts = useSelector(state => state.contacts);
 
     const getValues = (inputValues) => {
         if (inputValues.name === '' || inputValues.number === '') {
@@ -21,7 +21,8 @@ export function ContactForm() {
                 number: inputValues.number,
                 id: nanoid(),
             };
-            dispatch(addContact(contact))
+            
+            dispatch(addContact(contact));
             inputValues.name = '';
             inputValues.number = '';
             };
