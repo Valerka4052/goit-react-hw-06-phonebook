@@ -9,7 +9,7 @@ width: 800px;
 height:auto;
 border-radius: 40px;
 background-color:lightgreen;
-`;
+`
 
 export const Formik = styled(FormikFormik)`
 margin-bottom:40px;

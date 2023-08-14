@@ -24,11 +24,11 @@ export function App () {
         }}
       ><div>
           <h1>Phonebook</h1>
-          <ContactForm />
+      <ContactForm />
           <h2>Contacts</h2>
           <Filter />
         </div>
-        <ContactList />
+       <ContactList />
       </div>
     </div>
   );
